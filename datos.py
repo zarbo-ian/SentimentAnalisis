@@ -7,23 +7,29 @@ def cargar_sentimientos(FILE):
 
         with open(FILE, "r", encoding="utf-8") as file:
             lines = file.readlines()
-            def my_split(line):
+            def my_split(line): #sustituto de .split
                 descriptor_end = False
                 words = []
                 word = []
                 for char in line:
                     if char == ":":
                         descriptor_end = True
-                    elif char == ",":
-                        if descriptor_end:
-                            words.append("".join(word).strip())
-                            word = []
-                    else:
-                        if descriptor_end:
+                    elif descriptor_end:
+                        if char == ",":
+                            if word:
+                                words.append(concatenate_characters(word))
+                                word = []
+                        elif char != " " and char != "\n":
                             word.append(char)
                 if word:
-                    words.append("".join(word).strip())
+                    words.append(concatenate_characters(word))
                 return words
+            
+            def concatenate_characters(char_list): #sustituto de .join
+                result = ""
+                for char in char_list:
+                    result += char
+                return result
         positivos = my_split(lines[0])
         negativos = my_split(lines[1])
         return positivos, negativos
