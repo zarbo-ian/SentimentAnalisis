@@ -1,6 +1,6 @@
 import csv
 
-def cargar_sentimientos(FILE):
+def cargar_sentimientos(FILE): #esto antes eran cuatro lineas, this is why we cant have nice things, liberal sissies
     try:
         positivos = []
         negativos = []
