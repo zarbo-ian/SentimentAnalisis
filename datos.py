@@ -26,7 +26,7 @@ def cargar_datos_csv(comentarios):
 
     with open( comentarios ,"r" ) as archivo:
         lector = csv.reader( archivo )
-        encabezados = next( lector )
+        encabezados = next( lector ) #cambiar el next
 
         for linea in lector :
             id_publicacion.append ( linea[0] )
@@ -50,7 +50,7 @@ def cargar_publicaciones(PUBLICACION):
 
     with open(PUBLICACION, "r") as archivo:
         lector = csv.reader( archivo )
-        encabezados = next( lector )
+        encabezados = next( lector ) 
 
         for linea in lector :
             id_publicacion.append ( linea[0] )

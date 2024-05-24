@@ -1,6 +1,12 @@
 ###########################
 ####### FUNCION MENU ##########
 ###########################
+
+from datos import encabezados_com, id_publicacion_com, usuario_comentador, comentario
+from datos import encabezados_pub,id_publicacion_pub,usuario_publicador,publicacion
+from datos import positivos, negativos
+import csv
+
 def mostrar_menu():
     print("\nMenú principal")
     print("1. Carga de datos")
@@ -36,4 +42,5 @@ while continuar:
         if volver != 's':
             print("Saliendo del programa...")
             continuar = False
+
 
