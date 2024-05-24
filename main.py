@@ -2,9 +2,8 @@
 ####### FUNCION MENU ##########
 ###########################
 
-from datos import id_publicacion_com , usuario_comentador , comentario
-from datos import id_publicacion_pub , usuario_publicador , publicacion
-from datos import positivos , negativos
+from datos import *
+
 import csv
 
 def mostrar_menu() :
@@ -27,6 +26,10 @@ while continuar :
 
     if opcion == "1":
         print ("Todo lo relacionado con datos")
+        positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
+        id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
+        id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
+        
     elif opcion == "2":
         print ("Análisis detallado de la actividad de Influencers")
     elif opcion == "3":
