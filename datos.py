@@ -16,49 +16,46 @@ def cargar_sentimientos(FILE):
 file_name = "sentimientos.txt"
 positivos, negativos = cargar_sentimientos(file_name)
 
-fn= "comentarios.csv"
+fn = "comentarios.csv"
 
-def cargar_datos_csv(comentarios):
+def cargar_comentarios(FILE_COM):
 
-    id_publicacion = []
+    id_publicacion_com = []
     usuario_comentador = []
     comentario = []
 
-    with open( comentarios ,"r" ) as archivo:
-        lector = csv.reader( archivo )
-        encabezados = next( lector )
+    with open(FILE_COM, "r") as file:
+        reader = csv.reader(file)
 
-        for linea in lector :
-            id_publicacion.append ( linea[0] )
-            usuario_comentador.append ( linea[1] )
-            comentario.append ( linea[2] ) 
-    
-    return encabezados,id_publicacion,usuario_comentador,comentario
+        lines = list(reader)[1:]
+
+        for row in lines:
+            id_publicacion_com.append(int(row[0]))
+            usuario_comentador.append(row[1])
+            comentario.append(row[2])
+
+    return id_publicacion_com, usuario_comentador, comentario
+
+id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(fn)
 
 
-encabezados, id_publicacion_com, usuario_comentador, comentario = cargar_datos_csv(fn)
+fo = "publicaciones.csv"
 
-fl = "publicaciones.csv"
-
-print(usuario_comentador)
-
-def cargar_publicaciones(PUBLICACION):
-
-    id_publicacion = []
+def cargar_publicaciones(FILE_PUB):
+    id_publicacion_pub = []
     usuario_publicador = []
     publicacion = []
 
-    with open(PUBLICACION, "r") as archivo:
-        lector = csv.reader( archivo )
-        encabezados = next( lector )
+    with open(FILE_PUB, "r") as file:
+        reader = csv.reader(file)
 
-        for linea in lector :
-            id_publicacion.append ( linea[0] )
-            usuario_publicador.append ( linea[1] )
-            publicacion.append ( linea[2] ) 
+        lines = list(reader)[1:]
+
+        for row in lines:
+            id_publicacion_pub.append(int(row[0]))
+            usuario_publicador.append(row[1])
+            publicacion.append(row[2])
     
-    return encabezados,id_publicacion,usuario_publicador,publicacion
+    return id_publicacion_pub, usuario_publicador, publicacion
 
-encabezados,id_publicacion_pub,usuario_publicador,publicacion = cargar_publicaciones(fl)
-
-print(publicacion)
+id_publicacion_pub, usuatio_publicador, publicacion = cargar_publicaciones(fo)
