@@ -2,20 +2,36 @@ import csv
 
 def cargar_sentimientos(FILE):
     try:
-        with open(FILE, "r") as file:
+        positivos = []
+        negativos = []
+
+        with open(FILE, "r", encoding="utf-8") as file:
             lines = file.readlines()
-
-        descriptor1, words_line1 = lines[0].split(":", 1)
-        positivos = [word.strip() for word in words_line1.split(",")]
-
-        descriptor2, words_line2 = lines[1].split(":", 1)
-        negativos = [word.strip() for word in words_line2.split(",")]
+            def my_split(line):
+                descriptor_end = False
+                words = []
+                word = []
+                for char in line:
+                    if char == ":":
+                        descriptor_end = True
+                    elif char == ",":
+                        if descriptor_end:
+                            words.append("".join(word).strip())
+                            word = []
+                    else:
+                        if descriptor_end:
+                            word.append(char)
+                if word:
+                    words.append("".join(word).strip())
+                return words
+        positivos = my_split(lines[0])
+        negativos = my_split(lines[1])
         return positivos, negativos
     except FileNotFoundError:
         FILE = input("Error, Archivo no valido. Ingrese el nombre del archivo de sentimientos: ")
 
-
-
+positivos, negativos = cargar_sentimientos("sentimientos.txt")
+print(positivos)
 
 def cargar_comentarios(FILE_COM):
     try:
@@ -23,7 +39,7 @@ def cargar_comentarios(FILE_COM):
         usuario_comentador = []
         comentario = []
 
-        with open(FILE_COM, "r") as file:
+        with open(FILE_COM, "r", encoding="utf-8") as file:
             reader = csv.reader(file)
 
             lines = list(reader)[1:]
@@ -43,7 +59,7 @@ def cargar_publicaciones(FILE_PUB):
         usuario_publicador = []
         publicacion = []
 
-        with open(FILE_PUB, "r") as file:
+        with open(FILE_PUB, "r", encoding="utf-8") as file:
             reader = csv.reader(file)
 
             lines = list(reader)[1:]
