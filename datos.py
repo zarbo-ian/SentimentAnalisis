@@ -17,15 +17,15 @@ def cargar_sentimientos(FILE): #esto antes eran cuatro lineas, this is why we ca
                     elif descriptor_end:
                         if char == ",":
                             if word:
-                                words.append(concatenate_characters(word))
+                                words.append(my_join(word))
                                 word = []
                         elif char != " " and char != "\n":
                             word.append(char)
                 if word:
-                    words.append(concatenate_characters(word))
+                    words.append(my_join(word))
                 return words
             
-            def concatenate_characters(char_list): #sustituto de .join
+            def my_join(char_list): #sustituto de .join
                 result = ""
                 for char in char_list:
                     result += char
