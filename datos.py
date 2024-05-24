@@ -16,8 +16,6 @@ def cargar_sentimientos(FILE):
 file_name = "sentimientos.txt"
 positivos, negativos = cargar_sentimientos(file_name)
 
-fn = "comentarios.csv"
-
 def cargar_comentarios(FILE_COM):
 
     id_publicacion_com = []
@@ -36,11 +34,6 @@ def cargar_comentarios(FILE_COM):
 
     return id_publicacion_com, usuario_comentador, comentario
 
-id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(fn)
-
-
-fo = "publicaciones.csv"
-
 def cargar_publicaciones(FILE_PUB):
     id_publicacion_pub = []
     usuario_publicador = []
@@ -58,4 +51,3 @@ def cargar_publicaciones(FILE_PUB):
     
     return id_publicacion_pub, usuario_publicador, publicacion
 
-id_publicacion_pub, usuatio_publicador, publicacion = cargar_publicaciones(fo)
