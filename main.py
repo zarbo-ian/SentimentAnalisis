@@ -3,6 +3,7 @@
 ###########################
 
 from datos import *
+from funciones import *
 
 import csv
 
@@ -30,15 +31,26 @@ while continuar :
 
     if opcion == "1":
         print ("Todo lo relacionado con datos")
-        positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
+        
+        #positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
+        positivos, negativos = cargar_sentimientos("sentimientos.txt")
         sentimientos_is_loaded = True
-        id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
+        #id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
+        id_publicacion_com, usuario_comentador, comentario = cargar_comentarios("comentarios.csv")
         comentarios_is_loaded = True
-        id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
+        #id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
+        id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones("publicaciones.csv")
         publicaciones_is_loaded = True
+        
 
     elif opcion == "2":
         print ("Análisis detallado de la actividad de Influencers")
+        comentario = a_min_comentarios(comentario)    
+        publicacion = a_min_comentarios(publicacion) 
+        puntajes_comentarios = calcular_puntaje_comentarios(comentario, positivos, negativos)
+        puntajes_publicaciones = calcular_puntaje_publicaciones(puntajes_comentarios, id_publicacion_com, id_publicacion_pub)
+        print(puntajes_comentarios)
+        print(puntajes_publicaciones)    
     elif opcion == "3":
         print ("Generación de reportes")
     elif opcion == "4":
