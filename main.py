@@ -32,14 +32,14 @@ while continuar :
     if opcion == "1":
         print ("Todo lo relacionado con datos")
         
-        #positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
-        positivos, negativos = cargar_sentimientos("sentimientos.txt")
+        positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
+        #positivos, negativos = cargar_sentimientos("sentimientos.txt")
         sentimientos_is_loaded = True
-        #id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
-        id_publicacion_com, usuario_comentador, comentario = cargar_comentarios("comentarios.csv")
+        id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
+        #id_publicacion_com, usuario_comentador, comentario = cargar_comentarios("comentarios.csv")
         comentarios_is_loaded = True
-        #id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
-        id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones("publicaciones.csv")
+        id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
+        #id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones("publicaciones.csv")
         publicaciones_is_loaded = True
         
 
