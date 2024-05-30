@@ -4,7 +4,7 @@ def cargar_sentimientos(FILE): #esto antes eran cuatro lineas, this is why we ca
     try:
         positivos = []
         negativos = []
-
+        
         with open(FILE, "r", encoding="utf-8") as file:
             lines = file.readlines()
             def my_split(line): #sustituto de .split

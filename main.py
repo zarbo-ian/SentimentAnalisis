@@ -17,6 +17,10 @@ def mostrar_menu() :
 
 continuar = True
 
+sentimientos_is_loaded = False
+comentarios_is_loaded = False
+publicaciones_is_loaded = False
+
 while continuar :
     opcion = mostrar_menu()
 
@@ -27,9 +31,12 @@ while continuar :
     if opcion == "1":
         print ("Todo lo relacionado con datos")
         positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
+        sentimientos_is_loaded = True
         id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
+        comentarios_is_loaded = True
         id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
-        
+        publicaciones_is_loaded = True
+
     elif opcion == "2":
         print ("Análisis detallado de la actividad de Influencers")
     elif opcion == "3":
