@@ -48,12 +48,14 @@ def cargar_comentarios(FILE_COM):
         with open(FILE_COM, "r", encoding="utf-8") as file:
             reader = csv.reader(file)
 
-            lines = list(reader)[1:]
-
-            for row in lines:
-                id_publicacion_com.append(int(row[0]))
-                usuario_comentador.append(row[1])
-                comentario.append(row[2])
+            header_skipped = False
+            for row in reader:
+                if not header_skipped:
+                    header_skipped = True
+                else:
+                    id_publicacion_com.append(int(row[0]))
+                    usuario_comentador.append(row[1])
+                    comentario.append(row[2])
 
         return id_publicacion_com, usuario_comentador, comentario
     except FileNotFoundError:
@@ -68,12 +70,14 @@ def cargar_publicaciones(FILE_PUB):
         with open(FILE_PUB, "r", encoding="utf-8") as file:
             reader = csv.reader(file)
 
-            lines = list(reader)[1:]
-
-            for row in lines:
-                id_publicacion_pub.append(int(row[0]))
-                usuario_publicador.append(row[1])
-                publicacion.append(row[2])
+            header_skipped = False
+            for row in reader:
+                if not header_skipped:
+                    header_skipped = True
+                else:
+                    id_publicacion_pub.append(int(row[0]))
+                    usuario_publicador.append(row[1])
+                    publicacion.append(row[2])
     
         return id_publicacion_pub, usuario_publicador, publicacion
     except FileNotFoundError:
