@@ -34,13 +34,12 @@ def calcular_puntaje_comentarios(comentarios, positivos, negativos):
     puntajes = []
     for comentario in comentarios:
         puntaje = 0
-        palabras = my_split(comentario)
-        for palabra in palabras: # falta ver el tema de "ama"
-            if palabra in positivos:
-                puntaje += 1
-            elif palabra in negativos:
-                puntaje -= 1
-        puntajes.append(puntaje)
+        
+        for i in positivos:
+            puntaje += comentario.count(i)
+        for i in negativos:
+            puntaje -= comentario.count(i)
+        puntajes.append(puntaje) 
     
     return puntajes
 
