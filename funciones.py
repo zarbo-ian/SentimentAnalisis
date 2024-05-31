@@ -82,98 +82,6 @@ def a_min(S):
 def a_min_comentarios(comentarios):
     return [a_min(item) for item in comentarios]
 
-###########################
-####### FUNCION MENU ##########
-###########################
-# def mostrar_menu():
-#     print("Menú principal")
-#     print("1. Carga de datos")
-#     print("2. Análisis de la actividad de Influencers")
-#     print("3. Reportes")
-#     print("4. Salir")
-#     n = input("Elige una opción (1-4): ")
-#     return n
-
-# def menu_analisis():
-#     print("1. Las 5 publicaciones con mejor calificación")
-#     print("2. El usuario publicador con más comentarios positivos")
-#     print("3. El usuario con mayor participación")
-#     print("4. Volver al menú anterior")
-#     n = int(input("A que menu queres ir?"))
-#     if n == "1":
-#         print("1. Las 5 publicaciones con mejor calificación")
-#     elif n == "2":
-#         print("El usuario publicador con más comentarios positivos")
-#     elif n == "3":
-#         print("3. El usuario con mayor participación")
-#     else:
-#         print("Volver al menu principal")
-     
-    
-    
-
-# continuar = True
-
-# while continuar:
-#     opcion = mostrar_menu()
-
-#     while opcion not in ["1", "2", "3", "4"]:
-#         print("Opción no válida, por favor elige una opción del 1 al 4.")
-#         opcion = mostrar_menu()
-
-#     if opcion == "1":
-#         print("Todo lo relacionado con datos")
-    
-#     elif opcion == "2":
-#         menu_analisis()
-    
-    
-#     elif opcion == "3":
-#         print("Generación de reportes")
-        
-#     elif opcion == "4":
-#         print("Saliendo del programa...")
-#         continuar = False
-#     else:
-#         continuar = True  # Opcional, para dejar claro que el bucle sigue si ninguna condición previa se cumple.
-
-#     if opcion != "4" and continuar:
-#         volver = input("¿Quieres volver al menú principal? (s/n): ")
-#         if volver != 's':
-#             print("Saliendo del programa...")
-#             continuar = False
-
-
-
-
-
-
-
-
-# #####################################################
-# ################ FUNCION MENU_ANALISIS###############
-# #####################################################
-
-# def menu_analisis():
-#     print("Análisis de la Actividad de los Influencers:")
-#     print("1. Las 5 publicaciones con mejor calificación")
-#     print("2. El usuario publicador con más comentarios positivos")
-#     print("3. El usuario con mayor participación")
-#     print("4. Volver al menú anterior")
-#     n = int(input("A que menu queres ir?"))
-#     if n == "1":
-#         print("1. Las 5 publicaciones con mejor calificación")
-#     elif n == "2":
-#         print("El usuario publicador con más comentarios positivos")
-
-#     elif n == "3":
-#         print("3. El usuario con mayor participación")
-#     else:
-#         print("Volver al menu principal")
-# ########################################################################################
-# ###################### FUNCION FILTRAR COMENTARIOS #####################################
-# ########################################################################################
-
 def usuario_mas_votado(usuarios, puntajes):
     puntaje_usuario = {}
 
@@ -215,7 +123,7 @@ def usuarios_mejor_promedio(usuarios, puntajes):
     
     promedio_usuarios = {}
     for usuario in puntajes_usuarios:
-        promedio_usuarios[usuario] = puntajes_usuarios[usuario] / count_usuario[usuario]
+        promedio_usuarios[usuario] = round(puntajes_usuarios[usuario] / count_usuario[usuario], 1)
 
     usuarios_top = []
     puntajes_top = []
@@ -236,7 +144,9 @@ def usuarios_mejor_promedio(usuarios, puntajes):
 
     return usuarios_top, puntajes_top
 
-#NADA DE LO SIGUIENTE SIRVE
+######################################
+######NADA DE LO SIGUIENTE SIRVE######
+######################################
 import sys
 
 def reporte(publicaciones, comentarios):

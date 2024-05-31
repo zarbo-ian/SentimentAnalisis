@@ -54,7 +54,7 @@ while continuar :
     elif opcion == "3":
         print ("Generación de reportes")
         top_user = usuario_mas_votado(usuario_publicador, puntajes_publicaciones)
-        #print("Usuario mas votado:", top_user)
+        print("Usuario mas votado:", top_user)
         mayor_promedio_usuario, mayor_promedio_puntaje = usuarios_mejor_promedio(usuario_publicador, puntajes_publicaciones)
         print("Usuarios con mejor promedio:", mayor_promedio_usuario, mayor_promedio_puntaje)
     elif opcion == "4":
