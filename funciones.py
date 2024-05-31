@@ -54,8 +54,6 @@ def calcular_puntaje_publicaciones(puntaje_com, id_comentario, id_publicacion):
     puntaje_final = [puntaje_pub[post] for post in id_publicacion]
     return puntaje_final
         
-
-
 def mostrar_reportes():
     is_valid_input = False
     times_failed = 0
