@@ -53,6 +53,8 @@ while continuar :
         print(puntajes_publicaciones)    
     elif opcion == "3":
         print ("Generación de reportes")
+        top_user = usuario_mas_votado(usuario_publicador, puntajes_publicaciones)
+        print("Usuario mas votado:", top_user)
     elif opcion == "4":
         print ("Saliendo del programa...")
         continuar = False

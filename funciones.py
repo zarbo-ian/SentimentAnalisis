@@ -174,17 +174,42 @@ def a_min_comentarios(comentarios):
 # ###################### FUNCION FILTRAR COMENTARIOS #####################################
 # ########################################################################################
 
+def usuario_mas_votado(usuarios, puntajes):
+    puntaje_usuario = {}
+
+    for i in range(len(usuarios)):
+        usuario = usuarios[i]
+        puntaje = puntajes[i]
+
+        if usuario in puntaje_usuario:
+            puntaje_usuario[usuario] += puntaje
+        else:
+            puntaje_usuario[usuario] = puntaje
+
+    puntaje_maximo_usuario = None
+    puntaje_maximo = float("-inf")
+
+    for usuario, puntaje in puntaje_usuario.items():
+        if puntaje > puntaje_maximo:
+            puntaje_maximo = puntaje
+            puntaje_maximo_usuario = usuario
+
+    return puntaje_maximo_usuario
+
+
+
+#NADA DE LO SIGUIENTE SIRVE
 import sys
 
-def reporte():
+def reporte(publicaciones, comentarios):
     
     #abre y estructura el primer csv
-    with open("itba\publicaciones.csv") as file:
+    with open(publicaciones) as file:
         publicaciones = file.readlines()
         publicaciones = estructurar_csv(publicaciones)
     
     #abre y estructura el segundo csv
-    with open("itba\comentarios.csv") as file:
+    with open(comentarios) as file:
         comentarios = file.readlines()
         comentarios = estructurar_csv(comentarios)
 
@@ -240,4 +265,4 @@ def escribir_reporte(user,archivo_1,archivo_2):
         file.write(f"Usuario: {user}\n")
         file.write(f"Cantidad de publicaciones: {numero_publicaciones}\n")
         file.write(f"Cantidad de comentarios: {numero_comentarios}\n")
-reporte()
+#reporte()

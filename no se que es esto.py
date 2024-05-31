@@ -20,14 +20,14 @@ def clasificar_comentario(comentario, sentimientos_positivos, sentimientos_negat
 
 
 
-def a_min(S):
-    rta = ""
-    for i in range(len(S)):
-        if 'A' <= S[i] <= 'Z':
-            rta += chr(ord(S[i]) + 32)
-        else:
-            rta += S[i]
-    return rta
+#def a_min(S):        #CORTALA CON EL A MIN
+#    rta = ""
+#    for i in range(len(S)):
+#        if 'A' <= S[i] <= 'Z':
+#            rta += chr(ord(S[i]) + 32)
+#        else:
+#            rta += S[i]
+#    return rta
 
 
 
