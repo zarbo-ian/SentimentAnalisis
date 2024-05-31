@@ -57,6 +57,8 @@ while continuar :
         print("Usuario mas votado:", top_user)
         mayor_promedio_usuario, mayor_promedio_puntaje = usuarios_mejor_promedio(usuario_publicador, puntajes_publicaciones)
         print("Usuarios con mejor promedio:", mayor_promedio_usuario, mayor_promedio_puntaje)
+        usuario_mas_activo, participaciones = usuario_mayor_participacion(usuario_comentador, usuario_publicador)
+        print("El usuario más activo es:", usuario_mas_activo, "con", participaciones, "participaciones")
     elif opcion == "4":
         print ("Saliendo del programa...")
         continuar = False

@@ -144,29 +144,58 @@ def usuarios_mejor_promedio(usuarios, puntajes):
 
     return usuarios_top, puntajes_top
 
-######################################
-######NADA DE LO SIGUIENTE SIRVE######
-######################################
-import sys
+def usuario_mayor_participacion(comentadores, publicadores):
+    usuario_count = {}
 
-def reporte(publicaciones, comentarios):
+    for user in comentadores:
+        if user in usuario_count:
+            usuario_count[user] += 1
+        else:
+            usuario_count[user] = 1
     
-    #abre y estructura el primer csv
-    with open(publicaciones) as file:
-        publicaciones = file.readlines()
-        publicaciones = estructurar_csv(publicaciones)
-    
-    #abre y estructura el segundo csv
-    with open(comentarios) as file:
-        comentarios = file.readlines()
-        comentarios = estructurar_csv(comentarios)
+    for user in publicadores:
+        if user in usuario_count:
+            usuario_count[user] += 1
+        else:
+            usuario_count[user] = 1
 
-    user = get_valid_user(comentarios,publicaciones)
-    escribir_reporte(user,comentarios,publicaciones)
-    
-    print(user)
+    max_usuario = None
+    max_count = 0
 
-#devuelve csv estructurado
+    for user, count in usuario_count.items():
+        if count > max_count:
+            max_usuario = user
+            max_count = count
+
+    return max_usuario, max_count
+
+def reporte(FILE_PUB, FILE_COM):
+    # Abre y estructura el primer csv
+    try:
+        with open(FILE_PUB) as file:
+            publicaciones = file.readlines()
+            publicaciones = estructurar_csv(publicaciones)
+    except FileNotFoundError:
+        print("Error: No se encontró el archivo publicaciones.csv.")
+        return
+
+    # Abre y estructura el segundo csv
+    try:
+        with open(FILE_COM) as file:
+            comentarios = file.readlines()
+            comentarios = estructurar_csv(comentarios)
+    except FileNotFoundError:
+        print("Error: No se encontró el archivo comentarios.csv.")
+        return
+
+    user = get_valid_user(comentarios, publicaciones)
+    if user:
+        escribir_reporte(user, comentarios, publicaciones)
+        print(user)
+    else:
+        print("Excediste el número máximo de intentos")
+
+# Devuelve csv estructurado
 def estructurar_csv(archivo):
     archivo_estructurado = []
     for linea in archivo:
@@ -174,8 +203,8 @@ def estructurar_csv(archivo):
         archivo_estructurado.append(linea)
     return archivo_estructurado
 
-#devuelve un usuario valido que se encuentre en al menos un archivo
-def get_valid_user(archivo_1,archivo_2):
+# Devuelve un usuario válido que se encuentre en al menos un archivo
+def get_valid_user(archivo_1, archivo_2):
     for intentos in range(3):
         check_1 = False
         check_2 = False
@@ -192,25 +221,24 @@ def get_valid_user(archivo_1,archivo_2):
                 check_2 = True
                 break
 
-        if (check_1 == True) or (check_2 == True):
+        if check_1 or check_2:
             return user
-        
-    sys.exit("Exediste el numero maximo de intentos")
 
-#analiza la cantidad de comentarios y publicaciones de un usuario y escribe el reporte
-def escribir_reporte(user,archivo_1,archivo_2):
+    return None
+
+# Analiza la cantidad de comentarios y publicaciones de un usuario y escribe el reporte
+def escribir_reporte(user, archivo_1, archivo_2):
     numero_comentarios = 0
     for usuario in archivo_1:
         if user == usuario[1]:
-            numero_comentarios +=1
+            numero_comentarios += 1
     
     numero_publicaciones = 0
     for usuario in archivo_2:
         if user == usuario[1]:
-            numero_publicaciones +=1
+            numero_publicaciones += 1
     
-    with open("itba\REPORTES.txt","a") as file:
+    with open("itba/REPORTES.txt", "a") as file:
         file.write(f"Usuario: {user}\n")
         file.write(f"Cantidad de publicaciones: {numero_publicaciones}\n")
         file.write(f"Cantidad de comentarios: {numero_comentarios}\n")
-#reporte()
