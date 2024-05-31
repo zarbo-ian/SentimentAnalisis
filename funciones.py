@@ -196,7 +196,45 @@ def usuario_mas_votado(usuarios, puntajes):
 
     return puntaje_maximo_usuario
 
+def usuarios_mejor_promedio(usuarios, puntajes):
+    
+    puntajes_usuarios = {}
+    count_usuario = {}
 
+    for i in range(len(usuarios)):
+        usuario = usuarios[i]
+        puntaje = puntajes[i]
+
+        if usuario in puntajes_usuarios:
+            puntajes_usuarios[usuario] += puntaje
+            count_usuario[usuario] += 1
+        else:
+            puntajes_usuarios[usuario] = puntaje
+            count_usuario[usuario] = 1
+
+    
+    promedio_usuarios = {}
+    for usuario in puntajes_usuarios:
+        promedio_usuarios[usuario] = puntajes_usuarios[usuario] / count_usuario[usuario]
+
+    usuarios_top = []
+    puntajes_top = []
+
+    while len(usuarios_top) < 5 and promedio_usuarios:
+        usuario_max = None
+        puntaje_max = float('-inf')
+
+        for user in promedio_usuarios:
+            if promedio_usuarios[user] > puntaje_max:
+                puntaje_max = promedio_usuarios[user]
+                usuario_max = user
+
+        if usuario_max is not None:
+            usuarios_top.append(usuario_max)
+            puntajes_top.append(promedio_usuarios[usuario_max])
+            del promedio_usuarios[usuario_max]
+
+    return usuarios_top, puntajes_top
 
 #NADA DE LO SIGUIENTE SIRVE
 import sys
