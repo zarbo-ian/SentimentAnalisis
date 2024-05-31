@@ -35,7 +35,8 @@ def cargar_sentimientos(FILE): #esto antes eran cuatro lineas, this is why we ca
         return positivos, negativos
     except FileNotFoundError:
         FILE = input("Error, Archivo no valido. Ingrese el nombre del archivo de sentimientos: ")
-
+        return cargar_sentimientos(FILE)
+    
 positivos, negativos = cargar_sentimientos("sentimientos.txt")
 print(positivos)
 
@@ -81,4 +82,39 @@ def cargar_publicaciones(FILE_PUB):
     
         return id_publicacion_pub, usuario_publicador, publicacion
     except FileNotFoundError:
-        FILE_PUB = input("Error, Archivo no valido. Ingrese el nombre del archivo de publicaciones: ")
+        FILE_PUB = input("Error, Archivo no valido. Ingrese el nombre del archivo de publicaciones: ")    
+        
+        
+#
+#
+#
+#
+#
+#
+#def a_min(S):
+    rta = ""
+    for i in S:
+        if 'A' <= i <= 'Z':
+            rta += chr(ord(i) + 32)
+        else:
+            rta += i
+    return  rta
+
+def a_min_comentarios(comentarios):
+    return [a_min(item) for item in comentarios]
+
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#

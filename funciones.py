@@ -175,3 +175,71 @@ def a_min_comentarios(comentarios):
 # ########################################################################################
 # ###################### FUNCION FILTRAR COMENTARIOS #####################################
 # ########################################################################################
+
+import sys
+
+def reporte():
+    
+    #abre y estructura el primer csv
+    with open("itba\publicaciones.csv") as file:
+        publicaciones = file.readlines()
+        publicaciones = estructurar_csv(publicaciones)
+    
+    #abre y estructura el segundo csv
+    with open("itba\comentarios.csv") as file:
+        comentarios = file.readlines()
+        comentarios = estructurar_csv(comentarios)
+
+    user = get_valid_user(comentarios,publicaciones)
+    escribir_reporte(user,comentarios,publicaciones)
+    
+    print(user)
+
+#devuelve csv estructurado
+def estructurar_csv(archivo):
+    archivo_estructurado = []
+    for linea in archivo:
+        linea = linea.strip("\n").split(",")
+        archivo_estructurado.append(linea)
+    return archivo_estructurado
+
+#devuelve un usuario valido que se encuentre en al menos un archivo
+def get_valid_user(archivo_1,archivo_2):
+    for intentos in range(3):
+        check_1 = False
+        check_2 = False
+        
+        user = input("Escribe el usuario de la persona que quieres buscar: ")
+        
+        for linea in archivo_1:
+            if user == linea[1]:
+                check_1 = True
+                break
+
+        for linea in archivo_2:
+            if user == linea[1]:
+                check_2 = True
+                break
+
+        if (check_1 == True) or (check_2 == True):
+            return user
+        
+    sys.exit("Exediste el numero maximo de intentos")
+
+#analiza la cantidad de comentarios y publicaciones de un usuario y escribe el reporte
+def escribir_reporte(user,archivo_1,archivo_2):
+    numero_comentarios = 0
+    for usuario in archivo_1:
+        if user == usuario[1]:
+            numero_comentarios +=1
+    
+    numero_publicaciones = 0
+    for usuario in archivo_2:
+        if user == usuario[1]:
+            numero_publicaciones +=1
+    
+    with open("itba\REPORTES.txt","a") as file:
+        file.write(f"Usuario: {user}\n")
+        file.write(f"Cantidad de publicaciones: {numero_publicaciones}\n")
+        file.write(f"Cantidad de comentarios: {numero_comentarios}\n")
+reporte()
