@@ -239,63 +239,6 @@ def usuario_mayor_participacion(comentadores, publicadores):
 
     return max_usuario, max_count
 
-def reporte(FILE_PUB, FILE_COM):
-    # Abre y estructura el primer csv
-    try:
-        with open(FILE_PUB) as file:
-            publicaciones = file.readlines()
-            publicaciones = estructurar_csv(publicaciones)
-    except FileNotFoundError:
-        print("Error: No se encontró el archivo publicaciones.csv.")
-        return
-
-    # Abre y estructura el segundo csv
-    try:
-        with open(FILE_COM) as file:
-            comentarios = file.readlines()
-            comentarios = estructurar_csv(comentarios)
-    except FileNotFoundError:
-        print("Error: No se encontró el archivo comentarios.csv.")
-        return
-
-    user = get_valid_user(comentarios, publicaciones)
-    if user:
-        escribir_reporte(user, comentarios, publicaciones)
-        print(user)
-    else:
-        print("Excediste el número máximo de intentos")
-
-# Devuelve csv estructurado
-def estructurar_csv(archivo):
-    archivo_estructurado = []
-    for linea in archivo:
-        linea = linea.strip("\n").split(",")
-        archivo_estructurado.append(linea)
-    return archivo_estructurado
-
-# Devuelve un usuario válido que se encuentre en al menos un archivo
-def get_valid_user(archivo_1, archivo_2):
-    for intentos in range(3):
-        check_1 = False
-        check_2 = False
-        
-        user = input("Escribe el usuario de la persona que quieres buscar: ")
-        
-        for linea in archivo_1:
-            if user == linea[1]:
-                check_1 = True
-                break
-
-        for linea in archivo_2:
-            if user == linea[1]:
-                check_2 = True
-                break
-
-        if check_1 or check_2:
-            return user
-
-    return None
-
 # Analiza la cantidad de comentarios y publicaciones de un usuario y escribe el reporte
 def escribir_reporte(user, archivo_1, archivo_2):
     numero_comentarios = 0
