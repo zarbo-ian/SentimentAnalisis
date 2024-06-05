@@ -1,5 +1,87 @@
 from datos import *
 
+# Variable para rastrear el menú actual
+current_menu = 0
+
+def mostrar_menu():
+    print("\nMenú principal")
+    print("1. Carga de datos")
+    print("2. Análisis de la actividad de Influencers")
+    print("3. Reportes")
+    print("4. Salir")
+    n = input("Elige una opción (1-4): ")
+    return n
+
+def volver_atras(current_menu):
+    respuesta = input("¿Qué deseas hacer? Si tu respuesta es 'S', volverás al menú anterior. Si es 'N', no te moverás de donde estás: ")
+    while respuesta not in ['S', 's', 'N', 'n']:
+        respuesta = input("Elige una opción válida ('S' o 'N'): ")
+    if respuesta == 'S' or respuesta == 's':
+        current_menu = 0  # Volver al menú principal
+    return current_menu
+
+def carga_datos():
+    current_menu = 1
+    while current_menu == 1:
+        print("\nCarga de Datos:")
+        print("Funcionalidad de carga de datos en desarrollo...")
+        current_menu = volver_atras(current_menu)
+    return current_menu
+
+def menu_analisis():
+    current_menu = 2
+    while current_menu == 2:
+        print("\nAnálisis de la Actividad de los Influencers:")
+        print("1. Las 5 publicaciones con mejor calificación")
+        print("2. El usuario publicador con más comentarios positivos")
+        print("3. El usuario con mayor participación")
+        print("4. Volver al menú anterior")
+        n = input("A qué opción quieres ir (1-4)? ")
+
+        if n == "1":
+            print("Las 5 publicaciones con mejor calificación")
+        elif n == "2":
+            print("El usuario publicador con más comentarios positivos")
+        elif n == "3":
+            print("El usuario con mayor participación")
+        elif n == "4":
+            current_menu = 0  # Volver al menú principal
+        else:
+            print("Opción no válida, por favor elige una opción del 1 al 4.")
+        
+        if current_menu == 2 and n != "4":
+            current_menu = volver_atras(current_menu)
+    return current_menu
+
+def menu_reportes():
+    current_menu = 3
+    while current_menu == 3:
+        print("\nGeneración de reportes:")
+        print("1. Reporte A")
+        print("2. Reporte B")
+        print("3. Reporte C")
+        print("4. Volver al menú anterior")
+        
+        n = input("A qué opción quieres ir (1-4)? ")
+        
+        value = ["1","2","3","4"]
+        
+        while n not in value:
+            print("Opcion Invalida, elija una opcion valida") 
+            n = str(input("Ingrese una opcion valida"))
+            if n == "1":
+                print("Generando Reporte A")
+            elif n == "2":
+                print("Generando Reporte B")
+            elif n == "3":
+                print("Generando Reporte C")
+            elif n == "4":
+                mostrar_menu() # Volver al menú principal
+        
+        if current_menu == 3 and n != "4":
+            current_menu = volver_atras(current_menu)
+    return current_menu
+
 fn = "comentarios.csv"
 id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(fn)
 
@@ -54,21 +136,9 @@ def calcular_puntaje_publicaciones(puntaje_com, id_comentario, id_publicacion):
     puntaje_final = [puntaje_pub[post] for post in id_publicacion]
     return puntaje_final
         
-def mostrar_reportes():
-    is_valid_input = False
-    times_failed = 0
-    while is_valid_input == False:
-        nom_usuario = input("Ingrese un nombre de usuario: ")
-        if nom_usuario in usuario_comentador or nom_usuario in usuario_publicador:
-            is_valid_input = True
-        else:
-            print("Nombre de usuario invalido. ", end= "")
-            is_valid_input = False
-            times_failed += 1
-            if times_failed >= 3:
-                #volver al menú principal
-                pass
-    #volver al menú principal
+def quitar_apostrofe(strings):
+    return [s[1:] for s in strings]
+
 
 def a_min(S):
     rta = ""
@@ -229,16 +299,16 @@ def get_valid_user(archivo_1, archivo_2):
 # Analiza la cantidad de comentarios y publicaciones de un usuario y escribe el reporte
 def escribir_reporte(user, archivo_1, archivo_2):
     numero_comentarios = 0
-    for usuario in archivo_1:
-        if user == usuario[1]:
+    for nombre in archivo_1:
+        if nombre == user:
             numero_comentarios += 1
     
     numero_publicaciones = 0
-    for usuario in archivo_2:
-        if user == usuario[1]:
+    for nombre in archivo_2:
+        if nombre == user:
             numero_publicaciones += 1
     
-    with open("itba/REPORTES.txt", "a") as file:
+    with open("REPORTE.txt", "a") as file:
         file.write(f"Usuario: {user}\n")
         file.write(f"Cantidad de publicaciones: {numero_publicaciones}\n")
         file.write(f"Cantidad de comentarios: {numero_comentarios}\n")

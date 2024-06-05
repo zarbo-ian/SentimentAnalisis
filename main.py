@@ -22,53 +22,99 @@ sentimientos_is_loaded = False
 comentarios_is_loaded = False
 publicaciones_is_loaded = False
 
-while continuar :
-    opcion = mostrar_menu()
 
-    while opcion not in ["1", "2", "3", "4"]:
-        print ("Opción no válida, por favor elige una opción del 1 al 4.")
+continuar = True
+current_menu = 0
+
+while continuar:
+    if current_menu == 0:
         opcion = mostrar_menu()
 
-    if opcion == "1":
-        print ("Todo lo relacionado con datos")
-        
-        positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
-        #positivos, negativos = cargar_sentimientos("sentimientos.txt")
-        sentimientos_is_loaded = True
-        id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
-        #id_publicacion_com, usuario_comentador, comentario = cargar_comentarios("comentarios.csv")
-        comentarios_is_loaded = True
-        id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
-        #id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones("publicaciones.csv")
-        publicaciones_is_loaded = True
-        
+        while opcion not in ["1", "2", "3", "4"]:
+            print("Opción no válida, por favor elige una opción del 1 al 4.")
+            opcion = mostrar_menu()
 
-    elif opcion == "2":
-        print ("Análisis detallado de la actividad de Influencers")
-        comentario = a_min_comentarios(comentario)    
-        publicacion = a_min_comentarios(publicacion) 
-        puntajes_comentarios = calcular_puntaje_comentarios(comentario, positivos, negativos)
-        puntajes_publicaciones = calcular_puntaje_publicaciones(puntajes_comentarios, id_publicacion_com, id_publicacion_pub)
-        print(puntajes_comentarios)
-        print(puntajes_publicaciones)    
-    elif opcion == "3":
-        print ("Generación de reportes")
-        top_user = usuario_mas_votado(usuario_publicador, puntajes_publicaciones)
-        print("Usuario mas votado:", top_user)
-        mayor_promedio_usuario, mayor_promedio_puntaje = usuarios_mejor_promedio(usuario_publicador, puntajes_publicaciones)
-        print("Usuarios con mejor promedio:", mayor_promedio_usuario, mayor_promedio_puntaje)
-        usuario_mas_activo, participaciones = usuario_mayor_participacion(usuario_comentador, usuario_publicador)
-        print("El usuario más activo es:", usuario_mas_activo, "con", participaciones, "participaciones")
-    elif opcion == "4":
-        print ("Saliendo del programa...")
-        continuar = False
-    else:
-        continuar = True  # Opcional, para dejar claro que el bucle sigue si ninguna condición previa se cumple.
+        if opcion == "1":
+            current_menu = 1
+            while current_menu == 1:
+                print("\nCarga de Datos:")
+                print("Funcionalidad de carga de datos en desarrollo...")
+                positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
+                #positivos, negativos = cargar_sentimientos("sentimientos.txt")
+                sentimientos_is_loaded = True
+                id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
+                #id_publicacion_com, usuario_comentador, comentario = cargar_comentarios("comentarios.csv")
+                usuario_comentador = quitar_apostrofe(usuario_comentador)
+                comentarios_is_loaded = True
+                id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
+                #id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones("publicaciones.csv")
+                usuario_publicador = quitar_apostrofe(usuario_publicador)
+                publicaciones_is_loaded = True
+                comentario = a_min_comentarios(comentario)    
+                publicacion = a_min_comentarios(publicacion) 
+                puntajes_comentarios = calcular_puntaje_comentarios(comentario, positivos, negativos)
+                puntajes_publicaciones = calcular_puntaje_publicaciones(puntajes_comentarios, id_publicacion_com, id_publicacion_pub)
+            
+                current_menu = volver_atras(current_menu)
 
-    if opcion != "4" and continuar:
-        volver = input ("¿Quieres volver al menú principal? (s/n): ")
-        if volver != 's':
-            print ("Saliendo del programa...")
+
+        elif opcion == "2":
+            
+            current_menu = 2
+            while current_menu == 2:
+                print("\nAnálisis de la Actividad de los Influencers:")
+                print("1. Las 5 publicaciones con mejor calificación")
+                print("2. El usuario publicador con más comentarios positivos")
+                print("3. El usuario con mayor participación")
+                print("4. Volver al menú anterior")
+                n = input("A qué opción quieres ir (1-4)? ")
+
+                if n == "1":
+                    print("Las 5 publicaciones con mejor calificación")
+                    mayor_promedio_publicacion, mayor_promedio_puntaje = usuarios_mejor_promedio(publicacion, puntajes_publicaciones)
+                    #print("Usuarios con mejor promedio:", mayor_promedio_publicacion, mayor_promedio_puntaje)
+                    print("PUBLICACION\t\tPUNTAJE")
+                    i = 0
+                    while i < len(mayor_promedio_publicacion):
+                        print(mayor_promedio_publicacion[i] + "\t" + str(mayor_promedio_puntaje[i]))
+                        i+=1
+                elif n == "2":
+                    print("El usuario publicador con más comentarios positivos")
+                    top_user = usuario_mas_votado(usuario_publicador, puntajes_publicaciones)
+                    print("Usuario mas votado:", top_user)
+                elif n == "3":
+                    print("El usuario con mayor participación")
+                    usuario_mas_activo, participaciones = usuario_mayor_participacion(usuario_comentador, usuario_publicador)
+                    print("El usuario más activo es:", usuario_mas_activo, "con", participaciones, "participaciones")
+                elif n == "4":
+                    current_menu = 0  # Volver al menú principal
+                else:
+                    print("Opción no válida, por favor elige una opción del 1 al 4.")
+        
+            if current_menu == 2 and n != "4":
+                current_menu = volver_atras(current_menu)    
+
+        elif opcion == "3":
+            current_menu = 3
+    
+            while current_menu == 3:
+                is_valid_input = False
+                times_failed = 0
+                while is_valid_input == False:
+                    nom_usuario = input("Ingrese un nombre de usuario, alternativamente, escriba 'Salir' para volver al menú principal: ")
+                    if nom_usuario in usuario_comentador or nom_usuario in usuario_publicador:
+                        is_valid_input = True
+                    elif nom_usuario == "SALIR" or nom_usuario == "Salir" or nom_usuario == "salir":
+                        current_menu = volver_atras(current_menu)
+                    else:
+                        print("Nombre de usuario invalido. ", end= "")
+                        is_valid_input = False
+                        times_failed += 1
+                        if times_failed >= 3:
+                            current_menu = 0
+                            is_valid_input = True  
+                escribir_reporte(nom_usuario, usuario_comentador, usuario_publicador)          
+
+        elif opcion == "4":
+            print("Saliendo del programa...")
             continuar = False
-
-
