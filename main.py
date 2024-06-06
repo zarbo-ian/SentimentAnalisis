@@ -84,8 +84,10 @@ while continuar:
                     print("Usuario mas votado:", top_user)
                 elif n == "3":
                     print("El usuario con mayor participación")
-                    usuario_mas_activo, participaciones = usuario_mayor_participacion(usuario_comentador, usuario_publicador)
+                    usuario_mas_activo, participaciones, lista_actividad = usuario_mayor_participacion(usuario_comentador, usuario_publicador, id_publicacion_com, id_publicacion_pub)
                     print("El usuario más activo es:", usuario_mas_activo, "con", participaciones, "participaciones")
+                    lista_actividad, lista_duplicas = ordenar_lista_actividad(lista_actividad)
+                    print("Porque aparece en las publicaciones:", str(lista_actividad)[1:-1], "y aparece múltiples veces en las publicaciones:", str(lista_duplicas)[1:-1])
                 elif n == "4":
                     current_menu = 0  # Volver al menú principal
                 else:

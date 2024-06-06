@@ -214,7 +214,7 @@ def usuarios_mejor_promedio(usuarios, puntajes):
 
     return usuarios_top, puntajes_top
 
-def usuario_mayor_participacion(comentadores, publicadores):
+def usuario_mayor_participacion(comentadores, publicadores, id_pub_com, id_pub_pub):
     usuario_count = {}
 
     for user in comentadores:
@@ -237,7 +237,43 @@ def usuario_mayor_participacion(comentadores, publicadores):
             max_usuario = user
             max_count = count
 
-    return max_usuario, max_count
+    #Lo siguiente dice en qué posts interactuó
+    resultados = []
+    i = 0
+    while i < len(comentadores):
+        if comentadores[i] == max_usuario:
+            resultados.append(id_pub_com[i])
+        i += 1
+    i = 0
+    while i < len(publicadores):
+        if publicadores[i] == max_usuario:
+            resultados.append(id_pub_pub[i]) 
+        i += 1
+
+    return max_usuario, max_count, resultados
+
+#ordena la lista de de actividad
+def insertion_sort(arr):
+        for i in range(1, len(arr)):
+            key = arr[i]
+            j = i - 1
+            while j >= 0 and key < arr[j]:
+                arr[j + 1] = arr[j]
+                j -= 1
+            arr[j + 1] = key
+        return arr
+
+def ordenar_lista_actividad(array):
+    sorted_array = insertion_sort(array)
+    lista_completa = []
+    lista_duplicas = []
+
+    for num in sorted_array:
+        if num in lista_completa:
+            lista_duplicas.append(num)
+        else:
+            lista_completa.append(num)
+    return lista_completa, lista_duplicas
 
 # Analiza la cantidad de comentarios y publicaciones de un usuario y escribe el reporte
 def escribir_reporte(user, archivo_1, archivo_2):
