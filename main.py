@@ -18,9 +18,7 @@ def mostrar_menu() :
 
 continuar = True
 
-sentimientos_is_loaded = False
-comentarios_is_loaded = False
-publicaciones_is_loaded = False
+datos_is_loaded = False
 
 
 continuar = True
@@ -41,24 +39,24 @@ while continuar:
                 print("Funcionalidad de carga de datos en desarrollo...")
                 positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
                 #positivos, negativos = cargar_sentimientos("sentimientos.txt")
-                sentimientos_is_loaded = True
+                
                 id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
                 #id_publicacion_com, usuario_comentador, comentario = cargar_comentarios("comentarios.csv")
                 usuario_comentador = quitar_apostrofe(usuario_comentador)
-                comentarios_is_loaded = True
+                
                 id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
                 #id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones("publicaciones.csv")
                 usuario_publicador = quitar_apostrofe(usuario_publicador)
-                publicaciones_is_loaded = True
+                
                 comentario = a_min_comentarios(comentario)    
                 publicacion = a_min_comentarios(publicacion) 
                 puntajes_comentarios = calcular_puntaje_comentarios(comentario, positivos, negativos)
                 puntajes_publicaciones = calcular_puntaje_publicaciones(puntajes_comentarios, id_publicacion_com, id_publicacion_pub)
-            
+                datos_is_loaded = True
                 current_menu = volver_atras(current_menu)
 
 
-        elif opcion == "2":
+        elif opcion == "2" and datos_is_loaded:
             
             current_menu = 2
             while current_menu == 2:
@@ -96,13 +94,13 @@ while continuar:
             if current_menu == 2 and n != "4":
                 current_menu = volver_atras(current_menu)    
 
-        elif opcion == "3":
+        elif opcion == "3" and datos_is_loaded:
             current_menu = 3
     
             while current_menu == 3:
                 is_valid_input = False
                 times_failed = 0
-                while is_valid_input == False:
+                while is_valid_input == False and current_menu == 3:
                     nom_usuario = input("Ingrese un nombre de usuario, alternativamente, escriba 'Salir' para volver al menú principal: ")
                     if nom_usuario in usuario_comentador or nom_usuario in usuario_publicador:
                         is_valid_input = True
@@ -120,3 +118,7 @@ while continuar:
         elif opcion == "4":
             print("Saliendo del programa...")
             continuar = False
+        
+        elif datos_is_loaded == False:
+            print("Error. Debe cargar los datos primero")
+            current_menu = 0
