@@ -3,7 +3,7 @@ from datos import *
 # Variable para rastrear el menú actual
 current_menu = 0
 
-def mostrar_menu():
+def mostrar_menu(): #Muestra el menu
     print("\nMenú principal")
     print("1. Carga de datos")
     print("2. Análisis de la actividad de Influencers")
@@ -20,15 +20,15 @@ def volver_atras(current_menu):
         current_menu = 0  # Volver al menú principal
     return current_menu
 
-def carga_datos():
+def carga_datos():#Menu de carga de datos opcion 1
     current_menu = 1
     while current_menu == 1:
         print("\nCarga de Datos:")
         print("Funcionalidad de carga de datos en desarrollo...")
-        current_menu = volver_atras(current_menu)
+        current_menu = volver_atras(current_menu) #Vuelve al menu principal
     return current_menu
 
-def menu_analisis():
+def menu_analisis(): #Menu de carga de analisis opcion 2
     current_menu = 2
     while current_menu == 2:
         print("\nAnálisis de la Actividad de los Influencers:")
@@ -53,7 +53,7 @@ def menu_analisis():
             current_menu = volver_atras(current_menu)
     return current_menu
 
-def menu_reportes():
+def menu_reportes(): #Menu de reportes opcion 3
     current_menu = 3
     while current_menu == 3:
         print("\nGeneración de reportes:")
