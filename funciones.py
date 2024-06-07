@@ -88,7 +88,7 @@ id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(fn)
 fo = "publicaciones.csv"
 id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(fo)
 
-def my_split(line): #sustituto de .split
+def my_split(line): #sustituto de .split()
     descriptor_end = False
     words = []
     word = []
@@ -106,13 +106,13 @@ def my_split(line): #sustituto de .split
         words.append(my_join(word))
     return words
 
-def my_join(char_list): #sustituto de .join
+def my_join(char_list): #sustituto de .join()
     result = ""
     for char in char_list:
         result += char
     return result
 
-def my_count(comentario, frase):
+def my_count(comentario, frase): #sustituto de .count()
     counter = 0
     frase_len = len(frase)
     i = 0
@@ -177,7 +177,7 @@ def usuario_mas_votado(usuarios, puntajes):
             puntaje_usuario[usuario] = puntaje
 
     puntaje_maximo_usuario = None
-    puntaje_maximo = float("-inf")
+    puntaje_maximo = float("-inf") #una infinidad negativa, para que cualquier valor, por más negativo que sea pueda comenzar la cuenta sigueinte
 
     for usuario, puntaje in puntaje_usuario.items():
         if puntaje > puntaje_maximo:
@@ -250,6 +250,8 @@ def usuario_mayor_participacion(comentadores, publicadores, id_pub_com, id_pub_p
             max_count = count
 
     #Lo siguiente dice en qué posts interactuó
+    #si ya establecimos quien es el usuario con mas participaciones, aquí se verifica con cada lista
+    #y se agrega el id de publicacion con el mismo index a la lista de actividad
     resultados = []
     i = 0
     while i < len(comentadores):
@@ -264,7 +266,7 @@ def usuario_mayor_participacion(comentadores, publicadores, id_pub_com, id_pub_p
 
     return max_usuario, max_count, resultados
 
-#ordena la lista de de actividad
+#ordena la lista de de actividad con un insertion sort
 def insertion_sort(arr):
         for i in range(1, len(arr)):
             key = arr[i]

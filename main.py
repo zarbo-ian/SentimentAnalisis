@@ -87,10 +87,10 @@ while continuar: #cuando termine continuar se acaba en script
                     print("Las 5 publicaciones con mejor calificación")
                     mayor_promedio_publicacion, mayor_promedio_puntaje = usuarios_mejor_promedio(publicacion, puntajes_publicaciones)
                     #print("Usuarios con mejor promedio:", mayor_promedio_publicacion, mayor_promedio_puntaje)
-                    print("PUBLICACION\t\tPUNTAJE")
+                    print("PUBLICACION: PUNTAJE")
                     i = 0
                     while i < len(mayor_promedio_publicacion):
-                        print(mayor_promedio_publicacion[i] + "\t" + str(mayor_promedio_puntaje[i]))
+                        print(mayor_promedio_publicacion[i] + ": " + str(mayor_promedio_puntaje[i]))
                         i+=1
                 elif n == "2":
                     print("El usuario publicador con más comentarios positivos")
@@ -101,7 +101,10 @@ while continuar: #cuando termine continuar se acaba en script
                     usuario_mas_activo, participaciones, lista_actividad = usuario_mayor_participacion(usuario_comentador, usuario_publicador, id_publicacion_com, id_publicacion_pub)
                     print("El usuario más activo es:", usuario_mas_activo, "con", participaciones, "participaciones")
                     lista_actividad, lista_duplicas = ordenar_lista_actividad(lista_actividad)
-                    print("Porque aparece en las publicaciones:", str(lista_actividad)[1:-1], "y aparece múltiples veces en las publicaciones:", str(lista_duplicas)[1:-1])
+                    if len(lista_duplicas) >= 1: #Si el usuario interactuó en la misma publicacion múliples veces dice en cuales interactuo, caso contrario no lo dice
+                        print("Porque aparece en las publicaciones:", str(lista_actividad)[1:-1], "y aparece múltiples veces en las publicaciones:", str(lista_duplicas)[1:-1])
+                    else:
+                        print("Porque aparece en las publicaciones:", str(lista_actividad)[1:-1])
                 elif n == "4":
                     current_menu = 0  # Volver al menú principal
                 else:
