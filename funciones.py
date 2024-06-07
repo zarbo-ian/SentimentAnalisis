@@ -82,12 +82,6 @@ def menu_reportes(): #Menu de reportes opcion 3
             current_menu = volver_atras(current_menu)
     return current_menu
 
-fn = "comentarios.csv"
-id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(fn)
-
-fo = "publicaciones.csv"
-id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(fo)
-
 def my_split(line): #sustituto de .split()
     descriptor_end = False
     words = []

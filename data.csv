@@ -1,0 +1,41 @@
+id_publicacion,usuario_publicador,publicacion,usuario_comentador,calificacion
+1,traveler_joy,explorando nuevos destinos,sofia_martin,1
+2,foodie_adventure,delicias culinarias alrededor del mundo,sofia_martin,1
+3,tech_wizard,la ultima innovacion tecnologica,mariagomez,1
+4,sports_lover,emocionante partido de la temporada,mariagomez,1
+5,movie_buff,una obra maestra del cine,david22,1
+6,traveler_joy,aventuras en la jungla urbana,mariagomez,1
+7,foodie_adventure,cocina casera reconfortante,andres_93,-1
+8,tech_wizard,los gadgets mas asombrosos del anio,pablo_santos,0
+9,sports_lover,el juego del siglo,mariagomez,0
+10,movie_buff,un clasico reinventado,juancarlos82,1
+11,juliana19,firulais recorriendo el mundo,juliana19,1
+12,foodie_adventure,platos exoticos que debes probar,andres_93,-1
+13,tech_wizard,los secretos detras de la tecnologia punta,juliana19,1
+14,sports_lover,un torneo epico,mariagomez,1
+15,movie_buff,una joya del cine independiente,mariagomez,-1
+16,traveler_joy,la magia de las ciudades antiguas,mariagomez,1
+17,luciana_vega,les presento a mishi,andres_93,-1
+18,tech_wizard,como la tecnologia esta cambiando nuestras vidas,david22,-1
+19,juliana19,historias de firulais,pablo_santos,1
+20,movie_buff,un homenaje a los grandes directores,juancarlos82,1
+21,traveler_joy,destinos remotos para desconectar,luciana_vega,1
+22,foodie_adventure,comida callejera deliciosa y economica,andres_93,1
+23,tech_wizard,la revolucion de la realidad virtual,luciana_vega,1
+24,sports_lover,momentos inolvidables en la historia del deporte,luciana_vega,1
+25,movie_buff,peliculas que te dejaran sin aliento,luciana_vega,1
+26,traveler_joy,explorando la belleza bajo el agua,juliana19,-1
+27,foodie_adventure,recetas tradicionales con un toque moderno,juliana19,-1
+28,tech_wizard,la proxima gran innovacion en la industria,pablo_santos,1
+29,luciana_vega,mishi aventuras,pablo_santos,1
+30,movie_buff,una noche de clasicos de hollywood,sofia_martin,0
+31,traveler_joy,aventuras en la naturaleza virgen,luciana_vega,-1
+32,foodie_adventure,restaurantes con estrellas michelin,luciana_vega,1
+33,tech_wizard,los dispositivos mas esperados del futuro,juliana19,1
+34,sports_lover,el deporte como herramienta de cambio social,luciana_vega,1
+35,movie_buff,descubriendo joyas cinematograficas,david22,0
+36,traveler_joy,la ruta de los exploradores legendarios,mariagomez,1
+37,foodie_adventure,sabores locales autenticos,david22,1
+38,tech_wizard,como la inteligencia artificial esta transformando el mundo,luciana_vega,1
+39,sports_lover,de vuelta a los momentos mas emocionantes del deporte,juliana19,-1
+40,movie_buff,cine experimental que desafia los limites,juancarlos82,1

@@ -3,6 +3,7 @@
 ###########################################################
 
 import csv
+from funciones import *
 
 def cargar_sentimientos(FILE):
     input_invalid = True
@@ -14,29 +15,6 @@ def cargar_sentimientos(FILE):
         
             with open(FILE, "r", encoding="utf-8") as file:
                 lines = file.readlines()
-                def my_split(line): # sustituto de .split
-                    descriptor_end = False #El descriptor es la primera palabra "Positivas:" o "Negativas:"
-                    words = []
-                    word = []
-                    for char in line:
-                        if char == ":":
-                            descriptor_end = True
-                        elif descriptor_end:
-                            if char == ",":
-                                if word:
-                                    words.append(my_join(word)) #Hace append, a insistencia de mi compañero explicaré lo que es un append: The append() method appends an element to the end of the list.
-                                    word = []
-                            elif char != " " and char != "\n":
-                                word.append(char)
-                    if word:
-                        words.append(my_join(word))
-                    return words
-            
-                def my_join(char_list): # sustituto de .join
-                    result = ""
-                    for char in char_list:
-                        result += char
-                    return result
 
             positivos = my_split(lines[0])
             negativos = my_split(lines[1])
@@ -96,3 +74,13 @@ def cargar_publicaciones(FILE_PUB): #ඞ
         except FileNotFoundError:
             FILE_PUB = input("Error, Archivo no valido. Ingrese el nombre del archivo de publicaciones: ")
             input_invalid = True
+
+def generar_data(id_publicacion, usuario_publicador, publicacion, usuario_comentador, calificaciones):
+    with open("data.csv", 'w') as file:
+
+        writer = csv.writer(file)
+        writer.writerow(["id_publicacion", "usuario_publicador", "publicacion", "usuario_comentador", "calificacion"])
+
+        for i in range(len(id_publicacion)):
+             writer.writerow([id_publicacion[i], usuario_publicador[i], publicacion[i], usuario_comentador[i], calificaciones[i]])
+
