@@ -21,7 +21,7 @@ continuar = True
 datos_is_loaded = False
 
 #Stylin' on 'em
-print("/n")
+print("\n")
 print("⠀⢸⣿⣿⣿⣿⣿⣿⡯⠀⠀⢽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣷⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
 print("⠀⠸⣿⣯⣷⣿⣿⣾⡯⠀⠀⢽⣿⣿⣿⣿⣾⣿⣷⣿⣿⣾⣿⣷⣿⣿⣾⣿⣷⣿⣿⣿⣿⣷⣀⠀⠀⠀⠀⠀⠀⢻⣿⣷⣿⣿⣾⣿⣷⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣯⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
 print("⠀⠀⠈⠛⣿⣿⣿⣿⡯⠀⠀⢽⣿⣿⡿⣟⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⡿⣿⡿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠙⣿⣿⡿⡿⡿⡿⡿⡿⡿⡿⣿⣯⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
@@ -67,7 +67,6 @@ while continuar: #cuando termine continuar se acaba en script
                 comentario = a_min_comentarios(comentario)    
                 publicacion = a_min_comentarios(publicacion) 
                 puntajes_comentarios = calcular_puntaje_comentarios(comentario, positivos, negativos)
-                print(puntajes_comentarios)
                 puntajes_publicaciones = calcular_puntaje_publicaciones(puntajes_comentarios, id_publicacion_com, id_publicacion_pub)
                 datos_is_loaded = True
                 current_menu = volver_atras(current_menu)
