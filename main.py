@@ -1,6 +1,6 @@
-###########################
-####### FUNCION MENU ##########
-###########################
+#############################
+####### FUNCION MENU ########
+#############################
 
 from datos import *
 from funciones import *
@@ -20,11 +20,30 @@ continuar = True
 
 datos_is_loaded = False
 
+#Stylin' on 'em
+print("/n")
+print("⠀⢸⣿⣿⣿⣿⣿⣿⡯⠀⠀⢽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣷⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⠸⣿⣯⣷⣿⣿⣾⡯⠀⠀⢽⣿⣿⣿⣿⣾⣿⣷⣿⣿⣾⣿⣷⣿⣿⣾⣿⣷⣿⣿⣿⣿⣷⣀⠀⠀⠀⠀⠀⠀⢻⣿⣷⣿⣿⣾⣿⣷⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣯⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⠀⠈⠛⣿⣿⣿⣿⡯⠀⠀⢽⣿⣿⡿⣟⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⡿⣿⡿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠙⣿⣿⡿⡿⡿⡿⡿⡿⡿⡿⣿⣯⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⠀⠀⠀⠀⠙⠿⣿⡯⠀⠀⠈⠀⠀⠈⠈⠀⠀⠁⠀⣿⣿⣽⣿⣯⣿⣿⡊⠀⠀⠈⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣟⠀⠀⠀⠀⠀⠀⠈⠈⠙⢿⣿⣿⣽⣿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣄⠀⠀⠀⠀⠈⣿⣿⣿⡿⣿⣿⣂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⠀⠀⠀⠀⠀⠀⠉⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣄⠀⠀⠀⠀⠀⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⣿⣿⣿⣿⣿⣾⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣦⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣯⣿⣿⣯⣿⣿⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣯⣿⣿⡋⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣦⠀⠀⠀⠀⠸⣿⣿⣿⡿⣿⣯⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⢸⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⣿⣿⣿⣦⠀⠀⠀⠀⠀⢠⣤⣤⣤⣤⣶⣿⣿⣿⣿⣻⣿⡟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⡧⠀⠀⠀⠀⢹⣿⣿⣿⣿⣿⣯⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⢸⣿⣿⣿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣯⣿⣾⣿⣿⣿⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣿⣿⣿⣿⣿⣄⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⡿⣟⠛⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⢸⣿⣿⣿⣿⣿⣿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⣿⣿⣿⣿⣿⣿⣧⡄⠀⠀⠀⠈⢿⣿⣿⣿⢿⣿⣿⣿⣷⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣽⣾⠗⠀⠀⠀⠀⠀⠀⠈⢿⣷⣿⣿⡿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⢸⣿⣿⣿⣾⣿⣿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣯⣿⣿⣿⣯⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⣿⣿⣿⣿⣟⣿⣿⠻⠆⠀⠀⠀⠀⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀")
+print("⠀⢸⣿⣿⣽⣿⣿⣿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢿⣿⣿⣿⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⣿⣿⣿⣿⣿⣿⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣯⡀⠀⠀⠀⢀⣽⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠸⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀")
+print("⠀⢸⣿⣿⣿⣿⣿⢿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⣿⣿⣿⣷⣿⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣺⣿⣿⣽⣿⣿⣿⡆⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⢹⣿⣷⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀")
+print("⠀⢸⣿⣿⣯⣿⣾⣿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣷⣦⣄⠀⠀⠀⠘⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⣿⣿⣿⣿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡿⣿⡃⠀⠀⣼⣿⣿⣿⣿⣿⣷⣿⣿⣯⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⢻⣿⣿⣿⣯⣿⣿⡀⠀⠀⠀⠀")
+print("⠀⢸⣿⣿⣿⣿⣿⣿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣿⣿⣿⣿⣽⣿⣷⣤⣤⣤⣤⣤⣤⣤⣴⣤⠀⠀⠈⢿⣿⣿⢿⣿⡿⠀⠀⣰⣿⣿⣿⣿⣿⡿⡟⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⢿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀")
+print("⠀⢸⣿⣿⣾⣿⣿⣿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡿⣿⣿⣿⣿⣿⡂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠹⣿⣿⡟⠁⠀⢠⣿⣿⣿⣿⣟⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣽⣿⣿⣧⠀⠀⠀")
+print("⠀⢸⣿⣿⣿⣿⡿⣿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣾⣿⣿⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⣿⣽⣿⣿⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡄⠀⠘⠑⠀⠀⢀⣿⣿⣿⣿⢿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣿⣿⣿⡦⠀⠀")
+print("⠀⠸⠻⠻⠫⠷⠟⠿⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠻⠻⠻⠻⠻⠻⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⠻⠻⠻⠻⠻⠻⠻⠻⠻⠻⠻⠻⠻⠻⠛⠟⠝⠋⠉⠁⠀⠀⠀⠀⠀⠺⠟⠟⠟⠟⠟⠟⠗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⠻⠽⠻⠫⠟⠟⠆⠀")
 
 continuar = True
 current_menu = 0
 
-while continuar:
+while continuar: #cuando termine continuar se acaba en script
     if current_menu == 0:
         opcion = mostrar_menu()
 
@@ -38,19 +57,17 @@ while continuar:
                 print("\nCarga de Datos:")
                 print("Funcionalidad de carga de datos en desarrollo...")
                 positivos, negativos = cargar_sentimientos(input("Ingrese el nombre del archivo de sentimientos: "))
-                #positivos, negativos = cargar_sentimientos("sentimientos.txt")
                 
                 id_publicacion_com, usuario_comentador, comentario = cargar_comentarios(input("Ingrese el nombre del archivo de comentarios: "))
-                #id_publicacion_com, usuario_comentador, comentario = cargar_comentarios("comentarios.csv")
                 usuario_comentador = quitar_apostrofe(usuario_comentador)
                 
                 id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones(input("Ingrese el nombre del archivo de publicaciones: "))
-                #id_publicacion_pub, usuario_publicador, publicacion = cargar_publicaciones("publicaciones.csv")
                 usuario_publicador = quitar_apostrofe(usuario_publicador)
                 
                 comentario = a_min_comentarios(comentario)    
                 publicacion = a_min_comentarios(publicacion) 
                 puntajes_comentarios = calcular_puntaje_comentarios(comentario, positivos, negativos)
+                print(puntajes_comentarios)
                 puntajes_publicaciones = calcular_puntaje_publicaciones(puntajes_comentarios, id_publicacion_com, id_publicacion_pub)
                 datos_is_loaded = True
                 current_menu = volver_atras(current_menu)

@@ -112,15 +112,27 @@ def my_join(char_list): #sustituto de .join
         result += char
     return result
 
+def my_count(comentario, frase):
+    counter = 0
+    frase_len = len(frase)
+    i = 0
+    while i <= len(comentario) - frase_len:
+        if comentario[i:i+frase_len] == frase:
+            counter += 1
+            i += frase_len
+        else:
+            i += 1
+    return counter
+
 def calcular_puntaje_comentarios(comentarios, positivos, negativos):
     puntajes = []
     for comentario in comentarios:
         puntaje = 0
         
         for i in positivos:
-            puntaje += comentario.count(i)
+            puntaje += my_count(comentario, i)
         for i in negativos:
-            puntaje -= comentario.count(i)
+            puntaje -= my_count(comentario, i)
         puntajes.append(puntaje) 
     
     return puntajes
